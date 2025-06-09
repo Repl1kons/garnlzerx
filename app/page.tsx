@@ -1,53 +1,14 @@
-import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Mail, MessageCircle, GitlabIcon, Server, Database, Shield, Code, Zap, Globe } from "lucide-react"
+import { Mail, MessageCircle, GitlabIcon, Server, Database, Shield, Code, Zap } from "lucide-react"
+// Импортируйте ThreeSceneFallback вместо ThreeScene, если Three.js не работает
+import ThreeSceneFallback from "@/components/three-scene-fallback"
+import SkillsMap from "@/components/skills-map"
+import AnimatedCodeEditor from "@/components/animated-code-editor"
+import TechProgressBars from "@/components/tech-progress-bars"
+import HoverEffects from "@/components/hover-effects"
 
 export default function HomePage() {
-  const projects = [
-    {
-      id: "pingflow",
-      title: "PingFlow",
-      description: "Платформа мониторинга сервисов и веб-сайтов",
-      icon: <Globe className="h-6 w-6" />,
-      tags: ["FastAPI", "PostgreSQL", "Redis", "Мониторинг"],
-      color: "from-slate-800 to-slate-900",
-      accent: "from-blue-500 to-cyan-500",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      id: "searchtorrent",
-      title: "SearchTorrent",
-      description: "Безопасный поиск торрентов с проверкой через VirusTotal",
-      icon: <Shield className="h-6 w-6" />,
-      tags: ["aiohttp", "BeautifulSoup", "VirusTotal", "Безопасность"],
-      color: "from-slate-800 to-slate-900",
-      accent: "from-emerald-500 to-teal-500",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      id: "getmetadata",
-      title: "GetMetadata",
-      description: "Сервис получения метаданных фильмов с КиноПоиска",
-      icon: <Database className="h-6 w-6" />,
-      tags: ["FastAPI", "aiohttp", "Pydantic", "API"],
-      color: "from-slate-800 to-slate-900",
-      accent: "from-orange-500 to-red-500",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      id: "booklib",
-      title: "BookLib",
-      description: "Электронная библиотека с ролевым доступом",
-      icon: <Server className="h-6 w-6" />,
-      tags: ["FastAPI", "S3", "PostgreSQL", "RBAC"],
-      color: "from-slate-800 to-slate-900",
-      accent: "from-purple-500 to-pink-500",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-  ]
-
   const techStack = [
     { name: "Python 3.11+", icon: <Code className="h-4 w-4" />, color: "bg-yellow-500/20 border-yellow-500/30" },
     { name: "FastAPI", icon: <Zap className="h-4 w-4" />, color: "bg-green-500/20 border-green-500/30" },
@@ -57,37 +18,6 @@ export default function HomePage() {
     { name: "JWT", icon: <Shield className="h-4 w-4" />, color: "bg-purple-500/20 border-purple-500/30" },
     { name: "AsyncIO", icon: <Zap className="h-4 w-4" />, color: "bg-indigo-500/20 border-indigo-500/30" },
     { name: "S3", icon: <Database className="h-4 w-4" />, color: "bg-orange-500/20 border-orange-500/30" },
-  ]
-
-  const skillCards = [
-    {
-      title: "Backend",
-      icon: <Server className="h-8 w-8 text-blue-400" />,
-      description: "Python, FastAPI, aiohttp, asyncio",
-      color: "from-blue-500/10 to-cyan-500/10",
-      border: "border-blue-500/20",
-    },
-    {
-      title: "Базы данных",
-      icon: <Database className="h-8 w-8 text-emerald-400" />,
-      description: "PostgreSQL, Redis, SQLAlchemy",
-      color: "from-emerald-500/10 to-teal-500/10",
-      border: "border-emerald-500/20",
-    },
-    {
-      title: "Безопасность",
-      icon: <Shield className="h-8 w-8 text-purple-400" />,
-      description: "JWT, RBAC, OAuth, bcrypt",
-      color: "from-purple-500/10 to-pink-500/10",
-      border: "border-purple-500/20",
-    },
-    {
-      title: "DevOps",
-      icon: <Zap className="h-8 w-8 text-yellow-400" />,
-      description: "Docker, GitLab CI, pytest",
-      color: "from-yellow-500/10 to-orange-500/10",
-      border: "border-yellow-500/20",
-    },
   ]
 
   return (
@@ -127,24 +57,17 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="absolute bottom-32 left-1/4 z-10 hidden lg:block">
-          <div className="bg-slate-900/80 backdrop-blur-sm border border-slate-700/50 rounded-lg p-3 transform rotate-1 shadow-2xl">
-            <div className="flex items-center gap-2">
-              <Shield className="h-4 w-4 text-emerald-400" />
-              <span className="text-emerald-400 text-xs">JWT Secure</span>
-            </div>
-          </div>
-        </div>
-
         <div className="relative container mx-auto px-4 py-20">
           <div className="text-center space-y-6">
             <div className="relative inline-block">
+              <div className="relative inline-block">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-xl opacity-30"></div>
               <div 
                 className="relative inline-flex items-center justify-center w-32 h-32 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mb-6 bg-cover bg-center"
                 style={{ backgroundImage: "url('image_logo.jpg')" }}
               >
               </div>
+            </div>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">Garnlzerx</h1>
             <p className="text-xl md:text-2xl text-blue-300 font-medium">Backend Developer на FastAPI</p>
@@ -188,6 +111,15 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      
+
+      {/* Animated Code Editor */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-white text-center mb-12">Живой код</h2>
+          <AnimatedCodeEditor />
+        </div>
+      </section>
 
       {/* Tech Stack */}
       <section className="py-16 bg-slate-950/50 relative">
@@ -208,125 +140,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Projects Grid */}
-      <section className="py-20 relative">
+      {/* Interactive Skills Map */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-white text-center mb-16">Интерактивная карта навыков</h2>
+          <SkillsMap />
+        </div>
+      </section>
+
+      {/* Tech Progress Bars */}
+      <section className="py-16 bg-slate-950/30">
+        <div className="container mx-auto px-4">
+          <TechProgressBars />
+        </div>
+      </section>
+
+      {/* Projects with Hover Effects */}
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-white text-center mb-16">Мои проекты</h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {projects.map((project, index) => (
-              <div key={project.id} className="relative group">
-                {/* Background Image */}
-                <div className="absolute inset-0 rounded-xl overflow-hidden">
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity duration-300"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-90`}></div>
-                </div>
-
-                {/* Floating Icon */}
-                <div
-                  className={`absolute -top-6 -right-6 w-12 h-12 rounded-full bg-gradient-to-r ${project.accent} flex items-center justify-center shadow-lg shadow-black/50 z-10`}
-                >
-                  {project.icon}
-                </div>
-
-                <Card className="relative bg-slate-900/80 backdrop-blur-sm border-slate-700/50 hover:bg-slate-900/90 transition-all duration-300 group overflow-hidden">
-                  <CardHeader className="relative z-10">
-                    <CardTitle className="text-white text-xl group-hover:text-blue-300 transition-colors">
-                      {project.title}
-                    </CardTitle>
-                    <CardDescription className="text-slate-300">{project.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="relative z-10">
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map((tag, tagIndex) => (
-                        <Badge
-                          key={tagIndex}
-                          variant="outline"
-                          className="border-slate-600 text-slate-300 bg-slate-800/50"
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                    <Button
-                      asChild
-                      className={`w-full bg-gradient-to-r ${project.accent} hover:opacity-90 text-white shadow-lg`}
-                    >
-                      <Link href={`/projects/${project.id}`}>Подробнее</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section with Overlapping Cards */}
-      <section className="py-16 bg-slate-950/30 relative">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white text-center mb-12">Навыки и опыт</h2>
-          <div className="relative max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {skillCards.map((skill, index) => (
-                <div key={index} className="relative">
-                  {/* Floating decoration */}
-                  <div
-                    className={`absolute -top-3 -right-3 w-6 h-6 rounded-full bg-gradient-to-r ${skill.color} border ${skill.border} z-10`}
-                  ></div>
-
-                  <Card
-                    className={`bg-slate-900/60 backdrop-blur-sm border-slate-700/50 hover:bg-slate-900/80 transition-all duration-300 transform hover:-translate-y-1 ${skill.border}`}
-                  >
-                    <CardHeader className="text-center">
-                      <div className="relative">
-                        <div
-                          className={`absolute inset-0 bg-gradient-to-r ${skill.color} rounded-full blur-xl opacity-50`}
-                        ></div>
-                        <div className="relative">{skill.icon}</div>
-                      </div>
-                      <CardTitle className="text-white text-lg mt-2">{skill.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-center">
-                      <p className="text-slate-300 text-sm">{skill.description}</p>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 relative">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg blur-xl"></div>
-              <div className="relative bg-slate-900/60 backdrop-blur-sm border border-slate-700/50 rounded-lg p-6">
-                <div className="text-3xl font-bold text-blue-400 mb-2">4+</div>
-                <div className="text-slate-300">Проектов</div>
-              </div>
-            </div>
-            <div className="text-center relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-lg blur-xl"></div>
-              <div className="relative bg-slate-900/60 backdrop-blur-sm border border-slate-700/50 rounded-lg p-6">
-                <div className="text-3xl font-bold text-emerald-400 mb-2">8+</div>
-                <div className="text-slate-300">Технологий</div>
-              </div>
-            </div>
-            <div className="text-center relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg blur-xl"></div>
-              <div className="relative bg-slate-900/60 backdrop-blur-sm border border-slate-700/50 rounded-lg p-6">
-                <div className="text-3xl font-bold text-purple-400 mb-2">100%</div>
-                <div className="text-slate-300">Асинхронность</div>
-              </div>
-            </div>
-          </div>
+          <HoverEffects />
         </div>
       </section>
 
